@@ -1,0 +1,96 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "FuelPrices.ORS/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/FuelPrices.ORS.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FuelPrices.ORS.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      }
+    }
+  },
+  "libraries": {
+    "FuelPrices.ORS/1.0.0": {
+      "type": "project",
+      "path": "../FuelPrices.ORS/FuelPrices.ORS.csproj",
+      "msbuildProject": "../FuelPrices.ORS/FuelPrices.ORS.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "FuelPrices.ORS >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/bluenotion-joel/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj",
+      "projectName": "FuelPrices.Services",
+      "projectPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj",
+      "packagesPath": "/Users/bluenotion-joel/.nuget/packages/",
+      "outputPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.Services/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/bluenotion-joel/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {},
+        "https://gitlab.bluenotion.nl/api/v4/projects/690/packages/nuget/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj": {
+              "projectPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.105/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
