@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices/FuelPrices.csproj": {}
+    "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices/FuelPrices.csproj": {}
   },
   "projects": {
-    "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj": {
+    "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj",
+        "projectUniqueName": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj",
         "projectName": "FuelPrices.ORS",
-        "projectPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj",
+        "projectPath": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj",
         "packagesPath": "/Users/bluenotion-joel/.nuget/packages/",
-        "outputPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.ORS/obj/",
+        "outputPath": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.ORS/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/bluenotion-joel/.nuget/NuGet/NuGet.Config"
@@ -61,14 +61,14 @@
         }
       }
     },
-    "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj": {
+    "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj",
+        "projectUniqueName": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj",
         "projectName": "FuelPrices.Services",
-        "projectPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj",
+        "projectPath": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj",
         "packagesPath": "/Users/bluenotion-joel/.nuget/packages/",
-        "outputPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.Services/obj/",
+        "outputPath": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.Services/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/bluenotion-joel/.nuget/NuGet/NuGet.Config"
@@ -84,8 +84,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj": {
-                "projectPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj"
+              "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj": {
+                "projectPath": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.ORS/FuelPrices.ORS.csproj"
               }
             }
           }
@@ -122,14 +122,14 @@
         }
       }
     },
-    "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices/FuelPrices.csproj": {
+    "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices/FuelPrices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices/FuelPrices.csproj",
+        "projectUniqueName": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices/FuelPrices.csproj",
         "projectName": "FuelPrices",
-        "projectPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices/FuelPrices.csproj",
+        "projectPath": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices/FuelPrices.csproj",
         "packagesPath": "/Users/bluenotion-joel/.nuget/packages/",
-        "outputPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices/obj/",
+        "outputPath": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/bluenotion-joel/.nuget/NuGet/NuGet.Config"
@@ -145,8 +145,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj": {
-                "projectPath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj"
+              "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj": {
+                "projectPath": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices.Services/FuelPrices.Services.csproj"
               }
             }
           }

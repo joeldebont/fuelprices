@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MCkYfBDQvu9S4sVwziWe46l0lEjkol8QA+osL5QfouEaLqQ77TIDxThrwRHo3O8d/8ZZfY9ja3tNv0dyWomStQ==",
+  "dgSpecHash": "L/co1MT/R2Bl++GBpnRRhGOh0G0nLHlncBG94UqBFY1+QERz/74igJpjVvft1uCW3z6bi/2rwqZ601wmCOUJtw==",
   "success": true,
-  "projectFilePath": "/Users/bluenotion-joel/Documents/Joel projects/tank/FuelPrices/FuelPrices/FuelPrices/FuelPrices.csproj",
+  "projectFilePath": "/Users/bluenotion-joel/Documents/personal-projects/fuelprices/FuelPrices/FuelPrices/FuelPrices.csproj",
   "expectedPackageFiles": [
     "/Users/bluenotion-joel/.nuget/packages/microsoft.aspnetcore.openapi/7.0.5/microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
     "/Users/bluenotion-joel/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
