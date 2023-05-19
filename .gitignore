@@ -1,0 +1,17 @@
+.vs/
+*.suo
+*.user
+*.orig
+packages/
+files/
+bin/
+obj/
+node_modules/
+wwwroot/
+.cache-loader/
+.idea/
+app/android/app/.settings
+tempkey.rsa
+appsettings.Local.json
+logs/
+.DS_Store
