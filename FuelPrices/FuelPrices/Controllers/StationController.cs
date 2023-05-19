@@ -1,3 +1,4 @@
+using FuelPrices.Services.Models.Station;
 using FuelPrices.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,10 +16,10 @@ public class StationController : BaseController
     }
 
     [HttpGet]
-    public async Task<decimal> AllAsync([FromQuery] float lat, [FromQuery] float lng)
+    public async Task<StationModel[]> AllAsync([FromQuery] float lat, [FromQuery] float lng)
     {
-        var result = await _stationService.GetStationsAsync(lat, lng);
+        var models = await _stationService.GetStationsAsync(lat, lng);
 
-        return result;
+        return models;
     }
 }

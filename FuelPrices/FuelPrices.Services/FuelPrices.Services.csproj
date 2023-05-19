@@ -15,8 +15,4 @@
       <ProjectReference Include="..\FuelPrices.ORS\FuelPrices.ORS.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Models\" />
-    </ItemGroup>
-
 </Project>
