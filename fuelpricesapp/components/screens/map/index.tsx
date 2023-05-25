@@ -1,6 +1,7 @@
 import Geolocation from '@react-native-community/geolocation';
 import React, { useEffect, useState } from 'react';
 import {
+  Platform,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -13,7 +14,7 @@ import {
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-import MapView, { MAP_TYPES, Marker, UrlTile } from 'react-native-maps';
+import MapView, { Callout, MAP_TYPES, Marker } from 'react-native-maps';
 import useStations from '../../../hooks/station';
 import { StationModel } from '../../../hooks/station/types';
 
@@ -65,17 +66,13 @@ const Map = () => {
                 latitudeDelta: .05,
                 longitudeDelta: .05
               }}
-              provider={undefined}
-              mapType={MAP_TYPES.NONE}
+              provider={Platform.OS == "android" ? "google" : undefined}
+              mapType={MAP_TYPES.STANDARD}
               rotateEnabled={false}
               zoomEnabled={true}
               style={styles.map}
               showsUserLocation
             >
-                <UrlTile
-                    urlTemplate="http://a.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
-                    maximumZ={18}
-                />
                 {
                     stations.map((station) => 
                         <Marker
@@ -84,10 +81,23 @@ const Map = () => {
                             latitude: station.latitude,
                             longitude: station.longitude
                         }}
-                        title={station.name}
-                        description={`${(station.distanceToStation / 1000).toFixed(2)} km`}
+                        // title={station.name}
+                        // description={`${(station.distanceToStation / 1000).toFixed(2)} km`}
                         onPress={() => setSelectedStation(station)}
-                    />)
+                    >
+                        <Callout>
+                            <Text>{station.name}</Text>
+                            <Text>{`${(station.distanceToStation / 1000).toFixed(2)} km`}</Text>
+                            {
+                                station.fuels.map((fuel => 
+                                    <View key={fuel.name}>
+                                        <Text>{fuel.name}</Text>
+                                        <Text>{fuel.price}</Text>
+                                    </View>
+                                ))
+                            }
+                        </Callout>
+                    </Marker>)
                 }
             </MapView>
             {
