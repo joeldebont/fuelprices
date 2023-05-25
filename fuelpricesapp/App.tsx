@@ -7,7 +7,8 @@
 
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Map from './components/screens/map';
+import { NavigationContainer } from '@react-navigation/native';
+import Navigation from './src/navigation/navigation';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +23,9 @@ const App = () => {
 
   return (
   <QueryClientProvider client={queryClient}>
-      <Map />
+    <NavigationContainer>
+      <Navigation />
+    </NavigationContainer>
   </QueryClientProvider>
   );
 }
