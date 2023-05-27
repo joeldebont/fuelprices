@@ -18,3 +18,13 @@ export const AskLocationPermission = async () => {
 
     return requestResult === RESULTS.GRANTED || requestResult === RESULTS.LIMITED;
 }
+
+export const CheckLocationPermission = async () => {
+    const checkResponse = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+
+    if(checkResponse === RESULTS.GRANTED || checkResponse === RESULTS.LIMITED) {
+        return true;
+    }
+
+    return false;
+};

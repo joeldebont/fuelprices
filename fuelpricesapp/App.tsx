@@ -9,6 +9,7 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './src/navigation/navigation';
+import { SessionProvider } from './src/contexts/sessionContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,11 +23,13 @@ const queryClient = new QueryClient({
 const App = () => {
 
   return (
-  <QueryClientProvider client={queryClient}>
-    <NavigationContainer>
-      <Navigation />
-    </NavigationContainer>
-  </QueryClientProvider>
+    <SessionProvider>
+      <QueryClientProvider client={queryClient}>
+        <NavigationContainer>
+          <Navigation />
+        </NavigationContainer>
+      </QueryClientProvider>
+    </SessionProvider>
   );
 }
 

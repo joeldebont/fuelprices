@@ -20,6 +20,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { RootStackParamList } from 'navigation/navigation';
 import { NavigationProp, RouteProp } from '@react-navigation/native';
 import { LoaderScreen } from 'react-native-ui-lib';
+import { useSession } from 'contexts/sessionContext';
+import { getCurrentFuels } from 'utils/FuelHelper';
 
 export interface MapParamList {
 
@@ -36,8 +38,8 @@ interface location {
 }
 
 const Map: FC<MapProps> = () => {
-  const isDarkMode = useColorScheme() === 'dark';
 
+  const { session } = useSession();
   const { useStation } = useStations();
 
   const [location, setLocation] = useState<location | null>(null);
@@ -45,7 +47,7 @@ const Map: FC<MapProps> = () => {
   const { data: stations = [], isLoading: isLoadingStations } = useStation(location?.lat ?? 0, location?.lng ?? 0, location !== null)
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: Colors.lighter,
     flex: 1
   };
 
@@ -64,7 +66,7 @@ const Map: FC<MapProps> = () => {
           location == null || isLoadingStations ? <LoaderScreen color={Colors.grey40}/> : 
           <>
             <StatusBar
-              barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+              barStyle={'dark-content'}
               backgroundColor={backgroundStyle.backgroundColor}
             />
             <ScrollView
@@ -72,7 +74,7 @@ const Map: FC<MapProps> = () => {
               style={backgroundStyle}>
               <View
                 style={{
-                  backgroundColor: isDarkMode ? Colors.black : Colors.white,
+                  backgroundColor: Colors.white,
                 }}>
               </View>
               <MapView
@@ -97,15 +99,13 @@ const Map: FC<MapProps> = () => {
                                 latitude: station.latitude,
                                 longitude: station.longitude
                             }}
-                            // title={station.name}
-                            // description={`${(station.distanceToStation / 1000).toFixed(2)} km`}
                             onPress={() => setSelectedStation(station)}
                         >
                             <Callout>
                                 <Text>{station.name}</Text>
                                 <Text>{`${(station.distanceToStation / 1000).toFixed(2)} km`}</Text>
                                 {
-                                    station.fuels.map((fuel => 
+                                    getCurrentFuels(station.fuels, session!.fuel).map((fuel => 
                                         <View key={fuel.name}>
                                             <Text>{fuel.name}</Text>
                                             <Text>{fuel.price}</Text>

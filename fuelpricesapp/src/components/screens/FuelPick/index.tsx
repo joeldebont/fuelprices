@@ -2,8 +2,10 @@ import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { Button, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RootStackParamList } from "navigation/navigation";
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { Colors, Image, RadioButton, RadioGroup, Text, View } from "react-native-ui-lib";
+import { useSession } from "contexts/sessionContext";
+import { Fuel } from "utils/constants/fuelConstants";
 
 export interface FuelPickParamList {
 
@@ -15,17 +17,23 @@ interface FuelPickProps {
 }
 
 const FuelPick: FC<FuelPickProps> = ({ navigation }) => {
-    
-    const [fuel, setFuel] = useState<number | null>(null);
 
-    const fuelOnChange = (value: number) => {
-        console.log(value);
+    const { setSessionFuel } = useSession();
+    const [fuel, setFuel] = useState<Fuel | null>(null);
+
+    const fuelOnChange = (value: Fuel) => {
         setFuel(value);
     }
 
-    const submit = () => {
+    const submit = useCallback(() => {
+        if(fuel == null) {
+            return;
+        }
+        
+        setSessionFuel(fuel);
+
         navigation.navigate('Permission', {});
-    }
+    }, [fuel, setSessionFuel]);
 
     return (
         <SafeAreaView style={{ padding: 10 }}>
@@ -33,8 +41,8 @@ const FuelPick: FC<FuelPickProps> = ({ navigation }) => {
                 <Image cover source={{uri: 'https://cdn.bluenotion.nl/88b7c48b841b750c6d8465cfbc3863c417acb2040019e2caac976e9122d4c799.jpeg'}}/>
                 <Text text75 center style={{marginTop: 20}}>Kies je gewenste brandstof. Deze kun je later nog altijd aanpassen</Text>
                 <RadioGroup initialValue={fuel} onValueChange={fuelOnChange}>
-                    <RadioButton value={0} label='Euro 95' containerStyle={[styles.radioButton, fuel === 0 && styles.selected]} />
-                    <RadioButton value={1} label='Diesel' containerStyle={[styles.radioButton, fuel === 1 && styles.selected]} />
+                    <RadioButton value={Fuel.EURO95} label='Euro 95' containerStyle={[styles.radioButton, fuel === Fuel.EURO95 && styles.selected]} />
+                    <RadioButton value={Fuel.DIESEL} label='Diesel' containerStyle={[styles.radioButton, fuel === Fuel.DIESEL && styles.selected]} />
                 </RadioGroup>
                 <Button title="Volgende" onPress={submit} disabled={fuel == null}></Button>
             </View>
