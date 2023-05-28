@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* fuelpricesappTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* fuelpricesappTests.m */; };
+		07686F182A22488500064AAA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07686F172A22488500064AAA /* FontAwesome.ttf */; };
+		07E8172A2A224EDE00A54C27 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E817272A224EDE00A54C27 /* FontAwesome5_Brands.ttf */; };
+		07E8172B2A224EDE00A54C27 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E817282A224EDE00A54C27 /* FontAwesome5_Regular.ttf */; };
+		07E8172C2A224EDE00A54C27 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E817292A224EDE00A54C27 /* FontAwesome5_Solid.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-fuelpricesapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-fuelpricesapp.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -30,6 +34,10 @@
 		00E356EE1AD99517003FC87E /* fuelpricesappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fuelpricesappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* fuelpricesappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fuelpricesappTests.m; sourceTree = "<group>"; };
+		07686F172A22488500064AAA /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		07E817272A224EDE00A54C27 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Brands.ttf; sourceTree = "<group>"; };
+		07E817282A224EDE00A54C27 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Regular.ttf; sourceTree = "<group>"; };
+		07E817292A224EDE00A54C27 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* fuelpricesapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fuelpricesapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = fuelpricesapp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = fuelpricesapp/AppDelegate.mm; sourceTree = "<group>"; };
@@ -86,6 +94,10 @@
 		13B07FAE1A68108700A75B9A /* fuelpricesapp */ = {
 			isa = PBXGroup;
 			children = (
+				07E817272A224EDE00A54C27 /* FontAwesome5_Brands.ttf */,
+				07E817282A224EDE00A54C27 /* FontAwesome5_Regular.ttf */,
+				07E817292A224EDE00A54C27 /* FontAwesome5_Solid.ttf */,
+				07686F172A22488500064AAA /* FontAwesome.ttf */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -243,7 +255,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				07E8172A2A224EDE00A54C27 /* FontAwesome5_Brands.ttf in Resources */,
+				07E8172B2A224EDE00A54C27 /* FontAwesome5_Regular.ttf in Resources */,
+				07E8172C2A224EDE00A54C27 /* FontAwesome5_Solid.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				07686F182A22488500064AAA /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

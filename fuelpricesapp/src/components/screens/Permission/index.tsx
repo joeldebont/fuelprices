@@ -2,8 +2,7 @@ import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RootStackParamList } from "navigation/navigation";
 import { FC } from "react";
-import { Image, Text, View } from "react-native-ui-lib";
-import { Button } from 'react-native';
+import { Button, Colors, Image, Text, View } from "react-native-ui-lib";
 import { AskLocationPermission } from "utils/PermissionHelpers";
 
 export interface PermissionParamList { }
@@ -20,7 +19,7 @@ const Permission: FC<PermissionProps> = ({ navigation }) => {
         const result = await AskLocationPermission();
 
         if(result) {
-            navigation.navigate('Map', {});
+            navigation.navigate('Main', {});
         }
     };
 
@@ -29,8 +28,8 @@ const Permission: FC<PermissionProps> = ({ navigation }) => {
             <View center style={{ marginTop: 100}}>
                 <Image cover source={{uri: 'https://cdn.bluenotion.nl/88b7c48b841b750c6d8465cfbc3863c417acb2040019e2caac976e9122d4c799.jpeg'}}/>
                 <Text text75 center style={{marginTop: 20}}>Voor het vinden van de dichtbijzijnde tankstations hebben we je locatie nodig.</Text>
-                <Button title="Geef toestemming" onPress={handleAskLocationPermission}></Button>
-                <Button title="Verder gaan zonder locatie" onPress={() => navigation.navigate('Map', {})}></Button>
+                <Button label="Geef toestemming" onPress={handleAskLocationPermission} style={{ marginTop: 40, width: '100%' }} />
+                <Button label="Verder gaan zonder locatie" color={Colors.$textNeutral} backgroundColor={Colors.white} onPress={() => navigation.navigate('Main', {})} style={{ marginTop: 5, width: '100%' }} />
             </View>
         </SafeAreaView>
     )

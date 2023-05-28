@@ -2,42 +2,23 @@ import Geolocation from '@react-native-community/geolocation';
 import React, { FC, useEffect, useState } from 'react';
 import {
   Platform,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
-
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
 import MapView, { Callout, MAP_TYPES, Marker } from 'react-native-maps';
 import useStations from 'hooks/station';
 import { StationModel } from 'hooks/station/types';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { RootStackParamList } from 'navigation/navigation';
-import { NavigationProp, RouteProp } from '@react-navigation/native';
-import { LoaderScreen } from 'react-native-ui-lib';
+import { Colors, LoaderScreen } from 'react-native-ui-lib';
 import { useSession } from 'contexts/sessionContext';
 import { getCurrentFuels } from 'utils/FuelHelper';
-
-export interface MapParamList {
-
-}
-
-interface MapProps {
-    route: RouteProp<RootStackParamList, 'Map'>;
-    navigation: NavigationProp<RootStackParamList, 'Map'>
-}
 
 interface location {
   lat: number;
   lng: number;
 }
 
-const Map: FC<MapProps> = () => {
+const Map = () => {
 
   const { session } = useSession();
   const { useStation } = useStations();
@@ -45,11 +26,6 @@ const Map: FC<MapProps> = () => {
   const [location, setLocation] = useState<location | null>(null);
   const [selectedStation, setSelectedStation] = useState<StationModel | null>(null);
   const { data: stations = [], isLoading: isLoadingStations } = useStation(location?.lat ?? 0, location?.lng ?? 0, location !== null)
-
-  const backgroundStyle = {
-    backgroundColor: Colors.lighter,
-    flex: 1
-  };
 
   useEffect(() => {
     Geolocation.getCurrentPosition(async (info) => {
@@ -61,22 +37,10 @@ const Map: FC<MapProps> = () => {
   }, []);
 
   return (
-      <SafeAreaView style={backgroundStyle}>
+      <View style={{ flex: 1}}>
         {
           location == null || isLoadingStations ? <LoaderScreen color={Colors.grey40}/> : 
           <>
-            <StatusBar
-              barStyle={'dark-content'}
-              backgroundColor={backgroundStyle.backgroundColor}
-            />
-            <ScrollView
-              contentInsetAdjustmentBehavior="automatic"
-              style={backgroundStyle}>
-              <View
-                style={{
-                  backgroundColor: Colors.white,
-                }}>
-              </View>
               <MapView
                   region={{
                     latitude: location.lat,
@@ -94,13 +58,13 @@ const Map: FC<MapProps> = () => {
                     {
                         stations.map((station) => 
                             <Marker
-                            key={station.name}
-                            coordinate={{
-                                latitude: station.latitude,
-                                longitude: station.longitude
-                            }}
-                            onPress={() => setSelectedStation(station)}
-                        >
+                                key={station.name}
+                                coordinate={{
+                                    latitude: station.latitude,
+                                    longitude: station.longitude
+                                }}
+                                onPress={() => setSelectedStation(station)}
+                            >
                             <Callout>
                                 <Text>{station.name}</Text>
                                 <Text>{`${(station.distanceToStation / 1000).toFixed(2)} km`}</Text>
@@ -116,24 +80,9 @@ const Map: FC<MapProps> = () => {
                         </Marker>)
                     }
                 </MapView>
-                {
-                    selectedStation != null &&
-                    <View>
-                    <Text>{selectedStation.name}</Text>
-                    <Text>{`${(selectedStation.distanceToStation / 1000).toFixed(2)} km`}</Text>
-                        {
-                            selectedStation.fuels.map((fuel => 
-                            <View key={fuel.name}>
-                                <Text>{fuel.name}</Text>
-                                <Text>{fuel.price}</Text>
-                            </View>))
-                        }
-                    </View>
-                }
-            </ScrollView>
         </>
       }
-      </SafeAreaView>
+      </View>
   );
 }
 
@@ -155,8 +104,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   map: {
-    height: 400,
-    width: 400
+    flex: 1
   }
 });
 

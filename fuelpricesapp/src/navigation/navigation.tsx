@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Map, { MapParamList } from "components/screens/map";
 import Welcome, { WelcomeParamList } from "components/screens/Welcome";
 import FuelPick, { FuelPickParamList } from "components/screens/FuelPick";
 import Permission, { PermissionParamList } from "components/screens/Permission";
@@ -7,12 +6,13 @@ import { SESSION_KEY, Session } from "contexts/sessionContext";
 import { useCallback, useEffect, useState } from "react";
 import { CheckLocationPermission } from "utils/PermissionHelpers";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Main, { MainParamList } from "components/screens/main";
 
 export type RootStackParamList = {
     Welcome: WelcomeParamList;
-    Map: MapParamList;
     FuelPick: FuelPickParamList;
     Permission: PermissionParamList;
+    Main: MainParamList;
 }
 
 interface RootStackScreenProps {
@@ -43,7 +43,7 @@ const Navigation = () => {
                 const result = await CheckLocationPermission();
     
                 if(result) {
-                    newRootProps.initialRoute = 'Map';
+                    newRootProps.initialRoute = 'Main';
                 } else {
                     newRootProps.initialRoute = 'Permission';
                 }
@@ -60,9 +60,9 @@ const Navigation = () => {
     const RootStackScreen = (props: RootStackScreenProps) => 
         <Stack.Navigator initialRouteName={props.initialRoute} screenOptions={{ headerShown: false}}>
             <Stack.Screen name="Welcome" component={Welcome} />
-            <Stack.Screen name="Map" component={Map} />
             <Stack.Screen name="FuelPick" component={FuelPick} />
             <Stack.Screen name="Permission" component={Permission} />
+            <Stack.Screen name="Main" component={Main} />
         </Stack.Navigator>;
 
     return <RootStackScreen {...rootProps} />
