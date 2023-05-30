@@ -2,7 +2,7 @@ import { StationModel } from "hooks/station/types";
 import { FlatList, ListRenderItemInfo, StyleSheet } from "react-native";
 import { Button, Colors, Image, ListItem, Text, View } from "react-native-ui-lib";
 import { FC, useMemo, useState } from "react";
-import { getCurrentFuel } from "utils/FuelHelper";
+import { getCurrentFuel, getFuelPriceStrings } from "utils/FuelHelper";
 import { useSession } from "contexts/sessionContext";
 import { getDistanceInKm } from "utils/StationHelpers";
 import { orderBy } from 'lodash-es';
@@ -27,34 +27,42 @@ const StationList: FC<StationListProps> = ({ stations }) => {
         return data
     }, [stations, session, fuelOrderBy]);
 
-    const renderListItem = (data: ListRenderItemInfo<StationModel>) => (
-        <ListItem
-            activeBackgroundColor={Colors.grey60}
-            activeOpacity={0.4}
-            height={77.5}
-            style={{ borderColor: Colors.grey40, borderBottomWidth: StyleSheet.hairlineWidth}}
-        >
-            <ListItem.Part left>
-                <Image
-                    style={{ width: 35, height: 35 }}
-                    source={{ uri: 'https://cdn.bluenotion.nl/fe2bae5a4d129aafae03246b7cf4ebf3856c10cb4b2105e7dd6270625c5aa4a7.png'}}
-                />
-            </ListItem.Part>
-            <ListItem.Part middle column containerStyle={{ paddingHorizontal: 17 }}>
-                <Text grey10 text70>
-                    {data.item.name}
-                </Text>
-                <Text grey40>
-                    {`${getDistanceInKm(data.item.distanceToStation)} km`}
-                </Text>
-            </ListItem.Part>
-            <ListItem.Part right>
-                <Text>
-                    {getCurrentFuel(data.item.fuels, session.session!.fuel)!.price}
-                </Text>
-            </ListItem.Part>
-        </ListItem>
-    );
+    const renderListItem = (data: ListRenderItemInfo<StationModel>) => {
+
+        const fuelPriceStrings = getFuelPriceStrings(getCurrentFuel(data.item.fuels, session.session!.fuel)!.price);
+
+        return (
+            <ListItem
+                activeBackgroundColor={Colors.grey60}
+                activeOpacity={0.4}
+                height={77.5}
+                style={{ borderColor: Colors.grey40, borderBottomWidth: StyleSheet.hairlineWidth}}
+            >
+                <ListItem.Part left>
+                    <Image
+                        style={{ width: 35, height: 35 }}
+                        source={{ uri: 'https://cdn.bluenotion.nl/fe2bae5a4d129aafae03246b7cf4ebf3856c10cb4b2105e7dd6270625c5aa4a7.png'}}
+                    />
+                </ListItem.Part>
+                <ListItem.Part middle column containerStyle={{ paddingHorizontal: 17 }}>
+                    <Text grey10 text70>
+                        {data.item.name}
+                    </Text>
+                    <Text grey40>
+                        {`${getDistanceInKm(data.item.distanceToStation)} km`}
+                    </Text>
+                </ListItem.Part>
+                <ListItem.Part right>
+                    <Text>
+                        € {fuelPriceStrings[0]}
+                    </Text>
+                    <Text text100>
+                        {fuelPriceStrings[1]}
+                    </Text>
+                </ListItem.Part>
+            </ListItem>
+        );
+    };
 
     return (
         <View style={{ flex: 1, padding: 10 }}>

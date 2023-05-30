@@ -31,12 +31,12 @@ const Main: FC<MainProps> = () => {
     const { data: stations = [], isLoading: isLoadingStations } = useStation(location?.lat ?? 0, location?.lng ?? 0, location !== null)
   
     useEffect(() => {
-      Geolocation.getCurrentPosition(async (info) => {
-        setLocation({
-          lat: info.coords.latitude,
-          lng: info.coords.longitude
+        Geolocation.getCurrentPosition(async (info) => {
+            setLocation({
+            lat: info.coords.latitude,
+            lng: info.coords.longitude
+            });
         });
-      });
     }, []);
 
     const color = Colors.$backgroundPrimaryHeavy;
