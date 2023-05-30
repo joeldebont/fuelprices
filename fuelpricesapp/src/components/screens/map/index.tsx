@@ -1,5 +1,4 @@
-import Geolocation from '@react-native-community/geolocation';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -7,34 +6,22 @@ import {
   View,
 } from 'react-native';
 import MapView, { Callout, MAP_TYPES, Marker } from 'react-native-maps';
-import useStations from 'hooks/station';
-import { StationModel } from 'hooks/station/types';
 import { Colors, LoaderScreen } from 'react-native-ui-lib';
 import { useSession } from 'contexts/sessionContext';
 import { getCurrentFuels } from 'utils/FuelHelper';
+import { StationModel } from 'hooks/station/types';
+import { Location } from '../main';
+import { getDistanceInKm } from 'utils/StationHelpers';
 
-interface location {
-  lat: number;
-  lng: number;
+interface MapProps {
+  stations: StationModel[];
+  isLoadingStations: boolean;
+  location: Location | null;
 }
 
-const Map = () => {
+const Map: FC<MapProps> = ({ stations, isLoadingStations, location }) => {
 
   const { session } = useSession();
-  const { useStation } = useStations();
-
-  const [location, setLocation] = useState<location | null>(null);
-  const [selectedStation, setSelectedStation] = useState<StationModel | null>(null);
-  const { data: stations = [], isLoading: isLoadingStations } = useStation(location?.lat ?? 0, location?.lng ?? 0, location !== null)
-
-  useEffect(() => {
-    Geolocation.getCurrentPosition(async (info) => {
-      setLocation({
-        lat: info.coords.latitude,
-        lng: info.coords.longitude
-      });
-    });
-  }, []);
 
   return (
       <View style={{ flex: 1}}>
@@ -63,11 +50,10 @@ const Map = () => {
                                     latitude: station.latitude,
                                     longitude: station.longitude
                                 }}
-                                onPress={() => setSelectedStation(station)}
                             >
                             <Callout>
                                 <Text>{station.name}</Text>
-                                <Text>{`${(station.distanceToStation / 1000).toFixed(2)} km`}</Text>
+                                <Text>{`${getDistanceInKm(station.distanceToStation)} km`}</Text>
                                 {
                                     getCurrentFuels(station.fuels, session!.fuel).map((fuel => 
                                         <View key={fuel.name}>

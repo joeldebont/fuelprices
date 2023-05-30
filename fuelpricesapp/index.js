@@ -9,7 +9,7 @@ import Geolocation from '@react-native-community/geolocation';
 import axios from 'axios';
 import { enableLatestRenderer } from 'react-native-maps';
 
-axios.defaults.baseURL = 'https://5f12-2001-1c05-3701-c400-786a-9ea6-4815-342e.ngrok-free.app/';
+axios.defaults.baseURL = 'https://ae0b-2001-1c05-3701-c400-641a-b326-fe64-3f9a.ngrok-free.app/';
 
 enableLatestRenderer();
 

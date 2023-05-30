@@ -1,14 +1,21 @@
 import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { RootStackParamList } from "navigation/navigation";
-import { FC, useCallback, useMemo, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ActionBar, Colors } from "react-native-ui-lib";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import StationList from "../StationList";
 import Map from "../map";
 import Settings from "../Settings";
+import useStations from "hooks/station";
+import Geolocation from "@react-native-community/geolocation";
 
 export interface MainParamList { };
+
+export interface Location {
+    lat: number;
+    lng: number;
+}
 
 interface MainProps {
     route: RouteProp<RootStackParamList, 'Main'>;
@@ -18,6 +25,19 @@ interface MainProps {
 const Main: FC<MainProps> = () => {
 
     const [active, setActive] = useState(0);
+    const { useStation } = useStations();
+
+    const [location, setLocation] = useState<Location | null>(null);
+    const { data: stations = [], isLoading: isLoadingStations } = useStation(location?.lat ?? 0, location?.lng ?? 0, location !== null)
+  
+    useEffect(() => {
+      Geolocation.getCurrentPosition(async (info) => {
+        setLocation({
+          lat: info.coords.latitude,
+          lng: info.coords.longitude
+        });
+      });
+    }, []);
 
     const color = Colors.$backgroundPrimaryHeavy;
 
@@ -43,13 +63,13 @@ const Main: FC<MainProps> = () => {
     const renderPage = useCallback(() => {
         switch (active) {
             case 0:
-                return <Map />
+                return <Map stations={stations} isLoadingStations={isLoadingStations} location={location} />
             case 1:
-                return <StationList />
+                return <StationList stations={stations} />
             case 2:
                 return <Settings />
         }
-    }, [active]);
+    }, [active, stations, isLoadingStations, location]);
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
